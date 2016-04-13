@@ -56,6 +56,10 @@
     color: rgb(233,50,117);
 }
 
+.links-container .narbar-link:active {
+    background-color: white;
+}
+
  .hero-content {
      position: relative;
      min-height: 600px;
