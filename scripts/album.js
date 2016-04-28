@@ -27,6 +27,16 @@
          { title: 'Wrong phone number', duration: '2:15'}
      ]
  };
+var albumJustinTimberlake = {
+    title: "Love Sex Magic",
+    artist: "Justin Timberlake",
+    label: "Sony",
+    year: "2004",
+    albumArtUrl: "assets/images/album_covers/justin.jpg",
+    songs: [
+        {title: "hey" }
+    ]
+};
 
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
