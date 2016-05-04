@@ -79,7 +79,6 @@ var createSongRow = function(songNumber, songName, songLength) {
  };
 
  var setCurrentAlbum = function(album) {
-     console.log("setCurrentAlbum was called")
      
      currentAlbum = album;
      var $albumTitle = $('.album-view-title');
@@ -100,6 +99,7 @@ var createSongRow = function(songNumber, songName, songLength) {
          $albumSongList.append($newRow);
      }
  };
+
 
 var trackIndex = function(album, song) {
     return album.songs.indexOf(song);
@@ -173,6 +173,19 @@ var updatePlayerBarSong = function() {
 };
 
 
+var togglePlayFromPlayerBar = function() {
+    var $currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
+  if (currentSoundFile.isPaused()) {
+      $currentlyPlayingCell.html(pausedButtonTemplate);
+      $(this).html(playerBarPauseButton);
+      currentSoundFile.play();
+  }  else if (currentSoundFile) {
+      $currentlyPlayingCell.html(playButtonTemplate);
+      $(this).html(playerBarPlayButton);
+      currentSoundFile.pause();
+  }
+};
+
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
 var playerBarPlayButton = '<span class="ion-play"></span>';
@@ -186,12 +199,13 @@ var currentVolume = 80;
 
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
+var $playPauseButton = $('.main-controls .play-pause')
 
  $(document).ready(function() {
-     console.log("Document became ready")
      setCurrentAlbum(albumPicasso);
      $previousButton.click(previousSong);
      $nextButton.click(nextSong);
+     $playPauseButton.click(togglePlayFromPlayerBar);
  
      
      var albums = [albumPicasso, albumMarconi, albumJustinTimberlake];
