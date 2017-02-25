@@ -31,13 +31,12 @@ var getSongNumberCell = function(number) {
 };
 
 var createSongRow = function(songNumber, songName, songLength) {
-    console.log("Create Song Row was Called");
      var template =
         '<tr class="album-view-song-item">'
-      + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
-      + '  <td class="song-item-title">' + songName + '</td>'
-      + '  <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>'
-      + '</tr>'
+        '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
+        '  <td class="song-item-title">' + songName + '</td>'
+        '  <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>'
+        '</tr>'
      ;
  
     var $row = $(template);
@@ -208,7 +207,7 @@ var nextSong = function() {
     currentSongIndex++;
     
     if (currentSongIndex >= currentAlbum.songs.length) {
-        currentSOngIndex = 0;
+        currentSongIndex = 0;
     }
     
     currentlyPlayingSongNumber = currentSongIndex + 1;
@@ -289,19 +288,19 @@ var $nextButton = $('.main-controls .next');
      setupSeekBars();
      $previousButton.click(previousSong);
      $nextButton.click(nextSong);
- 
-window.onload = function() {
-    
-     var albums = [albumPicasso, albumMarconi, albumJustinTimberlake];
-     var index = 1;
-     albumImage.addEventListener('click', function(event) {
-         setCurrentAlbum(album);
-         index++;
-         if (index == album.length) {
-             index = 0;
-         }
-     });
-}
+ });
+//window.onload = function() {
+//    
+//     var albums = [albumPicasso, albumMarconi, albumJustinTimberlake];
+//     var index = 1;
+//     albumImage.addEventListener('click', function(event) {
+//         setCurrentAlbum(album);
+//         index++;
+//         if (index == album.length) {
+//             index = 0;
+//         }
+//     });
+//}
      var clickHandler = function(targetElement) {
          var songNumber = parseInt($(this).attr('data-song-number'));
 
