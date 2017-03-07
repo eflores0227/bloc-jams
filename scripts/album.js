@@ -30,6 +30,17 @@ var getSongNumberCell = function(number) {
     return $('.song-item-number[data-song-number="' + number + '"]');
 };
 
+var albumGeorgeEzra = {
+    title: 'Wanted on Voyage',
+    artist: 'George Ezra',
+    label: 'Columbia',
+    year: '2014',
+    albumArtUrl: 'assests/images/Wanted_on_Voyage.jpg',
+    songs: [
+        { title: 'Barcelona', duration: '3:03' }
+    ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -83,7 +94,15 @@ var createSongRow = function(songNumber, songName, songLength) {
     return $row;
  };
 
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
+
  var setCurrentAlbum = function(album) {
+<<<<<<< HEAD
 
      currentAlbum = album;
      var $albumTitle = $('.album-view-title');
@@ -98,6 +117,14 @@ var createSongRow = function(songNumber, songName, songLength) {
      $albumImage.attr('src', album.albumArtUrl);
      $albumSongList.empty();
 
+=======
+     albumTitle.firstChild.nodeValue = album.title;
+     albumArtist.firstChild.nodeValue = album.artist;
+     albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
+     albumImage.setAttribute('src', album.albumArtUrl);
+     albumSongList.innerHTML = '';
+
+>>>>>>> checkpoint-25-assignment
      for (var i = 0; i < album.songs.length; i++) {
          console.log("The for loop on 78")
          var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
@@ -284,6 +311,7 @@ var togglePlayFromPlayerBar = function() {
 };
 =======
 
+
 var findParentByClassName = function(element, targetClass) {
     if (element) {
         var currentParent = element.parentElement;
@@ -335,6 +363,7 @@ var $playPauseButton = $('.main-controls .play-pause')
 
  $(document).ready(function() {
      setCurrentAlbum(albumPicasso);
+<<<<<<< HEAD
      setupSeekBars();
      $previousButton.click(previousSong);
      $nextButton.click(nextSong);
@@ -400,3 +429,16 @@ var $playPauseButton = $('.main-controls .play-pause')
      };
 
 });
+=======
+
+     var albums = [albumPicasso, albumMarconi, albumGeorgeEzra];
+     var index = 1;
+     albumImage.addEventListener("click", function(event) {
+         setCurrentAlbum(album[index]);
+         index++;
+         if (index == index.length) {
+             index = 0;
+         }
+     });
+ };
+>>>>>>> checkpoint-25-assignment
